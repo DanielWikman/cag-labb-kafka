@@ -25,7 +25,7 @@ public class OrderProcessorConfiguration {
     private String packTopic;
     private String backorderTopic;
     private String applicationId;
-
+    
     @Bean
     public ConsumerFactory<String, String> consumerFactory() {
         Map<String, Object> props = new HashMap<>();
