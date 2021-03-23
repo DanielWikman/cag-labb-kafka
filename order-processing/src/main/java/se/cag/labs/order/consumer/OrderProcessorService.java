@@ -1,6 +1,8 @@
 package se.cag.labs.order.consumer;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.kafka.annotation.KafkaListener;
+import org.springframework.kafka.support.Acknowledgment;
 import org.springframework.stereotype.Service;
 
 /**
@@ -18,5 +20,8 @@ public class OrderProcessorService {
         this.configuration = configuration;
     }
 
-    // a first hint... KafkaListener
+    @KafkaListener(topics = "${kafka.inTopic}")
+    public void handleEvent(String message, Acknowledgment ack) {
+        log.info("Consuming: " + message);
+    }
 }
