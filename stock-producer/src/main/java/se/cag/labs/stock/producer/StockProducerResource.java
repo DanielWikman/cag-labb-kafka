@@ -28,16 +28,20 @@ public class StockProducerResource {
 
     @PutMapping("stocks/stock")
     public void produceStock(@RequestBody Stock stock) throws JsonProcessingException {
-
-        log.info(mapper.writeValueAsString(stock));
-
-        // publish a stock value, KEYED topic, use sku as key
+        this.send(stock);
     }
 
     @PutMapping("stocks")
     public void produceStock(@RequestBody List<Stock> stocks) throws JsonProcessingException {
-        log.info(mapper.writeValueAsString(stocks));
-        // publish a stock value, KEYED topic, use sku as key
+        stocks.forEach(this::send);
+    }
+
+    private void send(Stock s) {
+        try {
+            template.send(configuration.getTopic(), s.getSku(), mapper.writeValueAsString(s));
+        } catch (JsonProcessingException e) {
+            log.error("Exception caught: ", e);
+        }
     }
 
 }

@@ -1,6 +1,6 @@
 server.port: 9002
 kafka:
-  servers:
+  servers: 78.70.35.171:9001,78.70.35.171:9002,78.70.35.171:9003
   topic: stocks-dawi
   application: stock-streaming-dawi
   globalStore: stock-store-dawi
