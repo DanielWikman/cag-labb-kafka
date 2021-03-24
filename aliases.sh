@@ -1,4 +1,5 @@
 
+
 alias k-config-topic="/opt/kafka/bin/kafka-configs.sh --zookeeper ${ZOOKEEPER} --entity-type topics --entity-name "
 alias k-topic="/opt/kafka/bin/kafka-topics.sh --zookeeper ${ZOOKEEPER} "
 alias k-consumer="/opt/kafka/bin/kafka-console-consumer.sh --bootstrap-server ${KAFKA} "
