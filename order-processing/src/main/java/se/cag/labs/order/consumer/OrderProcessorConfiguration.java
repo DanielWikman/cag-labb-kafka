@@ -12,7 +12,6 @@ import org.springframework.kafka.annotation.EnableKafkaStreams;
 import org.springframework.kafka.annotation.KafkaStreamsDefaultConfiguration;
 
 import org.springframework.kafka.config.KafkaStreamsConfiguration;
-import org.springframework.kafka.core.KafkaAdmin;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -28,7 +27,7 @@ public class OrderProcessorConfiguration {
     private String packTopic;
     private String backorderTopic;
     private String applicationId;
-    
+
     @Bean
     public KafkaAdmin kafkaAdmin() {
         Map<String, Object> configs = new HashMap<>();
