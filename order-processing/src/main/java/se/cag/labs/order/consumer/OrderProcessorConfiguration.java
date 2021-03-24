@@ -28,17 +28,10 @@ public class OrderProcessorConfiguration {
     private String backorderTopic;
     private String applicationId;
 
-    @Bean
-    public KafkaAdmin kafkaAdmin() {
-        Map<String, Object> configs = new HashMap<>();
-        configs.put(AdminClientConfig.BOOTSTRAP_SERVERS_CONFIG, servers);
-        return new KafkaAdmin(configs);
-    }
-
     @Bean(name = KafkaStreamsDefaultConfiguration.DEFAULT_STREAMS_CONFIG_BEAN_NAME)
     public KafkaStreamsConfiguration kStreamsConfigs() {
         Map<String, Object> config = new HashMap<>();
-        config.put(StreamsConfig.APPLICATION_ID_CONFIG, "application"); // TODO:FIXME
+        config.put(StreamsConfig.APPLICATION_ID_CONFIG, applicationId);
         config.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG, servers);
         config.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest");
         config.put(StreamsConfig.DEFAULT_KEY_SERDE_CLASS_CONFIG, Serdes.String().getClass());
