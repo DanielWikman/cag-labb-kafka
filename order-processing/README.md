@@ -62,10 +62,14 @@ A test you can make is to:
    
 # Exercise "Streaming Orders"
 
+In this case lets create the topics by hand:
+
+```
+$ k-topic --create --topic <packTopic from application.yml> --partitions 1 --replication-factor 3
+$ k-topic --create --topic <backorderTopic from application.yml> --partitions 1 --replication-factor 3
+```
+
 Now it is time to actually implement a streaming application. So we will simply
-<<<<<<< Updated upstream
-create a streaming application with a latch that actually 
-=======
 create a streaming application with a branch that actually splits our orders into 2 topics. 
 
 Make your own inventive predicate on which orders to pack or send to backorder :-P.
@@ -82,7 +86,7 @@ These are some useful links:
   - ConsumerConfig.AUTO_OFFSET_RESET_CONFIG -> 'earliest', you want to start from the beginning always here.
   - DEFAULT_KEY_SERDE_CLASS_CONFIG, DEFAULT_VALUE_SERDE_CLASS_CONFIG, both to Serde.String().
   https://www.codota.com/web/assistant/code/rs/5c76b28096b4b300015b40e5#L82
-
+    
 - How to get a handle to a StreamsBuilder and configure it (spring boot will do the rest)
   Paragraph 14.3.3 is the structural thing to use here. And you will probably want to use the .to method in some way
   

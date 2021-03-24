@@ -15,6 +15,7 @@ Use links:
 https://www.confluent.io/blog/spring-for-apache-kafka-deep-dive-part-2-apache-kafka-spring-cloud-stream/
 https://docs.spring.io/spring-kafka/docs/current/api/org/springframework/kafka/annotation/EnableKafkaStreams.html
 https://docs.spring.io/spring-boot/docs/current/reference/html/spring-boot-features.html#boot-features-kafka-streams
+https://spring.io/blog/2019/12/09/stream-processing-with-spring-cloud-stream-and-apache-kafka-streams-part-6-state-stores-and-interactive-queries
 
 and update the StockServiceConfiguration and StockServiceResource,
 to use a GlobalKTable / ReadOnlyKeyValueStore from the kafka topic to serve stocks.
