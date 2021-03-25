@@ -23,5 +23,6 @@ public class OrderProcessorService {
     @KafkaListener(topics = "${kafka.inTopic}")
     public void handleEvent(String message, Acknowledgment ack) {
         log.info("Consuming: " + message);
+        ack.acknowledge();
     }
 }
