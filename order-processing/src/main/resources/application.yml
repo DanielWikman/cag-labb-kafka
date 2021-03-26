@@ -1,7 +1,7 @@
 server.port: 9003
 
 kafka:
-  servers: 78.70.35.171:9001,78.70.35.171:9002,78.70.35.171:9003
+  servers: 
   inTopic: orders-dawi
   applicationId: orders-streaming-dawi
   packTopic: packing-dawi
