@@ -2,6 +2,7 @@ package se.cag.labs.order.consumer;
 
 import lombok.Data;
 import org.apache.kafka.clients.admin.AdminClientConfig;
+import org.apache.kafka.clients.admin.NewTopic;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.Serdes;
 import org.apache.kafka.streams.StreamsConfig;
@@ -47,5 +48,21 @@ public class OrderProcessorConfiguration {
         return new KafkaStreamsConfiguration(config);
     }
 
+    @Bean
+    public KafkaAdmin kafkaAdmin() {
+        Map<String, Object> configs = new HashMap<>();
+        configs.put(AdminClientConfig.BOOTSTRAP_SERVERS_CONFIG, servers);
+        return new KafkaAdmin(configs);
+    }
+
+    @Bean
+    public NewTopic topic1() {
+        return new NewTopic(packTopic, 1, (short) 3);
+    }
+
+    @Bean
+    public NewTopic topic2() {
+        return new NewTopic(backorderTopic, 1, (short) 3);
+    }
 }
 
